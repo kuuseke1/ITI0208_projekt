@@ -1,18 +1,48 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld v-bind:msg="hello"/>
+  <header>
+    <div id="app">
+      <nav class="menu">
+        <div class="container">
+          <div class="menu-bar">
+
+            <ul class="header-ul" style="display: flex">
+              <li>
+                <h1 class="header-logo"> Training App</h1>
+              </li>
+
+              <div class="menu-buttons">
+                <li>
+                  <router-link to="/Home">Home</router-link>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <transition name="moveInUp">
+          <router-view></router-view>
+        </transition>
+      </div>
   </div>
+  </header>
+
+  <!-- SIIN MEIE ID -->
+
+     <!--msg="Hehehehe"--->
 </template>
 
 <script>
+
 import HelloWorld from './components/HelloWorld.vue'
 import axios from "axios";
+import WelcomePage from "./views/WelcomePage.vue"
+import Navigation from "./components/Navigation.vue";
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: 'App',
+  component: {
+    WelcomePage
   },
   data() {
     return {
