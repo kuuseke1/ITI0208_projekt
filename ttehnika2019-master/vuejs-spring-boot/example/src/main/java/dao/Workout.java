@@ -18,7 +18,7 @@ public class Workout {
 
     protected Workout() {}
 
-    public Workout(List<Exercise> exercises, String lastName) {
+    public Workout(List<Exercise> exercises) {
         this.exercises = exercises;
         this.timestamp = new Date().getTime();
     }
