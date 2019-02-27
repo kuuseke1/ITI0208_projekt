@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ee.veikosoomets.example.main" target="1.8" />
       <module name="ee.veikosoomets.example.test" target="1.8" />
+      <module name="example.main" target="1.8" />
+      <module name="example.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
