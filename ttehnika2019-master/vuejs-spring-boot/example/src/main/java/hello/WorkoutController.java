@@ -2,10 +2,7 @@ package hello;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,22 +11,32 @@ public class WorkoutController {
 
     @Autowired WorkoutRepository repository;
 
-    @GetMapping("/getall")
+    @GetMapping("/workouts")
     @ResponseBody
     public List<Workout> getAll() {
         return repository.findAll();
     }
 
-    @GetMapping("/")
+    @GetMapping("/workouts/{workoutId}")
     @ResponseBody
-    public String getResponse() {
-        return "Hello";
+    public Workout getWorkoutById(@PathVariable("workoutId") Long workoutId) {
+        return repository.getOne(workoutId);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/workouts")
     @ResponseBody
     public Workout addWorkout(@RequestBody Workout workout) {
         repository.save(workout);
         return workout;
+    }
+
+    @DeleteMapping("/workouts/{workoutId}")
+    public void deleteWorkout(@PathVariable("workoutId") Long workoutId) {
+        repository.deleteById(workoutId);
+    }
+
+    @DeleteMapping("/workouts")
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }
