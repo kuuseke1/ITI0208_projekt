@@ -1,68 +1,72 @@
 <template>
-  <header>
     <div id="app">
-      <nav class="menu">
-        <div class="container">
-          <div class="menu-bar">
+        <Navigation />
+        <AddExercise />
+        <Exercises v-bind:exercises="exercises"/>
+    </div>
 
-            <ul class="header-ul" style="display: flex">
-              <li>
-                <h1 class="header-logo"> Training App</h1>
-              </li>
+    <!-- SIIN MEIE ID -->
 
-              <div class="menu-buttons">
-                <li>
-                  <router-link to="/Home">Home</router-link>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div class="container">
-        <transition name="moveInUp">
-          <router-view></router-view>
-        </transition>
-      </div>
-  </div>
-  </header>
-
-  <!-- SIIN MEIE ID -->
-
-     <!--msg="Hehehehe"--->
+    <!--msg="Hehehehe"--->
 </template>
 
 <script>
 
-import HelloWorld from './components/HelloWorld.vue'
-import axios from "axios";
-import WelcomePage from "./views/WelcomePage.vue"
-import Navigation from "./components/Navigation.vue";
+    import AddExercise from  './views/AddExercise';
+    import Navigation from './components/Navigation';
+    import Exercises from './components/Exercises';
 
-export default {
-  name: 'App',
-  component: {
-    WelcomePage
-  },
-  data() {
-    return {
-      hello: null
+
+    export default {
+        name: 'App',
+        components: {
+            Exercises,
+            Navigation,
+            AddExercise
+        },
+        data() {
+            return {
+                exercises: [
+                    {
+                        id: 1,
+                        title: "Exercise One",
+                        completed: false
+                    },
+                    {
+                        id: 2,
+                        title: "Exercise Two",
+                        completed: false
+                    }
+                ]
+            }
+        },
+
     }
-  },
-  mounted () {
-    axios.get('http://localhost:8080/hello-world').then(response => (this.hello = response.data));
-  }
-}
 
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.4;
+    }
+
+    .btn {
+        display: inline-block;
+        border: none;
+        background: #555;
+        color: #fff;
+        padding: 7px 20px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #666;
+    }
 </style>

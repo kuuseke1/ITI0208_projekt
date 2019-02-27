@@ -4,13 +4,12 @@ import dao.Exercise;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import dao.Workout;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RepositoryRestResource
+
 public interface WorkoutRepository extends JpaRepository<Workout, Long> {
 
 }
