@@ -9,7 +9,8 @@ import java.util.List;
 @Controller
 public class WorkoutController {
 
-    @Autowired WorkoutRepository repository;
+    @Autowired
+    WorkoutRepository repository;
 
     @GetMapping("/workouts")
     @ResponseBody

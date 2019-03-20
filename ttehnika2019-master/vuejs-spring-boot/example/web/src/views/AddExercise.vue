@@ -43,9 +43,8 @@
         methods: {
             addExercise() {
                 //this.$emit('addExercise', newExercise);
-                console.log("Heiaa")
                 axios
-                    .post('/add', {
+                    .post('http://localhost:8081/workouts', {
                         name: this.name,
                         repetitions: this.repetitions,
                     })
@@ -55,10 +54,7 @@
                         } else {
                             this.msg = "Something went wrong";
                         }
-                    }))
-                    .catch(err => {
-                        console.log(err);
-                    });
+                    }));
             },
         },
     };

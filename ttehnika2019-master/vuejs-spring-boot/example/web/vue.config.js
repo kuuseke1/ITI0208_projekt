@@ -1,5 +1,5 @@
 module.exports = {
     devServer: {
-        port: 9000
-    }
+        port: 8081,
+        proxy: { '/add': { target: 'http://localhost:8080', secure: false } } }
 };
