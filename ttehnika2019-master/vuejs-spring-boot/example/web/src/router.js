@@ -1,7 +1,12 @@
 import Vue from 'vue';
+import App from './App';
 import Router from 'vue-router';
-import WelcomePage from './views/WelcomePage.vue';
+import WelcomePage from './views/Home.vue';
 import AddExercise from "./views/AddExercise";
+import Registration from "./views/Registration";
+import LandingPage from "./views/LandingPage";
+import Home from "./views/Home";
+import Login from "./views/Login";
 
 Vue.use(Router);
 
@@ -9,14 +14,28 @@ Vue.use(Router);
 export default new Router({
     routes: [
         {
-            path: '/Home',
-            name: 'WelcomePage',
-            component: WelcomePage
+            path: '/',
+            name: 'landing',
+            component: LandingPage
         },
         {
-            path: '/addPost',
+            path: '/home',
+            name: 'Home',
+            component: Home
+        },
+        {
+            path: '/addExercise',
             name: 'AddExercise',
             component: AddExercise
         },
+        {
+            path: '/register',
+            component: Registration
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
+        }
     ]
 });

@@ -1,46 +1,31 @@
 <template>
     <div id="app">
-        <Navigation />
-        <AddExercise />
-        <Exercises v-bind:exercises="exercises"/>
+        <router-view @authenticated="setAuthenticated"/>
     </div>
-
-    <!-- SIIN MEIE ID -->
-
-    <!--msg="Hehehehe"--->
 </template>
 
 <script>
-
-    import AddExercise from  './views/AddExercise';
-    import Navigation from './components/Navigation';
-    import Exercises from './components/Exercises';
-
-
     export default {
-        name: 'App',
-        components: {
-            Exercises,
-            Navigation,
-            AddExercise
-        },
+        name: 'app',
         data() {
             return {
-                exercises: [
-                    {
-                        id: 1,
-                        title: "Exercise One",
-                        completed: false
-                    },
-                    {
-                        id: 2,
-                        title: "Exercise Two",
-                        completed: false
-                    }
-                ]
+                authenticated: false,
+                mockAccount: {
+                    username: "user",
+                    password: "pass"
+                }
             }
         },
-
+        mounted() {
+            if (!localStorage.authenticated) {
+                this.$router.replace({name: "landing"})
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+        }
     }
 
 </script>
@@ -55,6 +40,7 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
         line-height: 1.4;
+        color: white;
     }
 
     .btn {
@@ -68,5 +54,8 @@
 
     .btn:hover {
         background: #666;
+    }
+    [v-cloak] {
+        display: none;
     }
 </style>
